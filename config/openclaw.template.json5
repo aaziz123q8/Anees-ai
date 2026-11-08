@@ -29,6 +29,9 @@
     exec: { enabled: true, mode: "session" },
   },
 
+  // إيقاف فحص التحديثات اليومي (يتصل بـ telemetry.openclaw.ai). غيّره إن أردت التنبيه بالتحديثات.
+  update: { checkOnStart: false },
+
   // منع أدوات حساسة لا نحتاجها
   tools: {
     deny: ["gateway", "cron", "sessions_spawn", "sessions_send"],
