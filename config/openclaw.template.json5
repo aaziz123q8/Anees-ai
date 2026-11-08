@@ -1,0 +1,36 @@
+// قالب إعدادات OpenClaw لمستخدم واحد، بأضيق صلاحيات.
+// لا يحتوي أي سر. انسخه إلى ~/.openclaw/openclaw.json على جهازك.
+// تنبيه: مفتاح غير معروف يمنع البوابة من التشغيل، فلا تضف مفاتيح بالتخمين.
+{
+  gateway: {
+    mode: "local",
+    bind: "loopback",          // الوصول من جهازك فقط، لا شبكة ولا إنترنت
+    port: 18789,
+    auth: { mode: "token" },   // رمز الدخول يُنشأ تلقائياً
+  },
+
+  agents: {
+    defaults: {
+      // النموذج: Claude. المفتاح يدخله المعالج (onboard)، لا يُكتب هنا.
+      model: { primary: "anthropic/claude-sonnet-5-5" },
+    },
+  },
+
+  channels: {
+    whatsapp: {
+      dmPolicy: "allowlist",   // ممنوع "open" نهائياً
+      allowFrom: [],           // ضع رقمك فقط بصيغة دولية، مثال: ["+965XXXXXXXX"]
+      groupPolicy: "disabled", // لا مجموعات
+    },
+  },
+
+  // إرسال طلبات الموافقة على الأوامر الخطرة إلى محادثتك
+  approvals: {
+    exec: { enabled: true, mode: "session" },
+  },
+
+  // منع أدوات حساسة لا نحتاجها
+  tools: {
+    deny: ["gateway", "cron", "sessions_spawn", "sessions_send"],
+  },
+}
