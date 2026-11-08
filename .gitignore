@@ -1,0 +1,20 @@
+# نسخة OpenClaw الرسمية (مستودع مستقل، لا يُرفع هنا)
+openclaw/
+
+# الأسرار والمفاتيح
+.env
+.env.*
+*.key
+*.pem
+secrets/
+
+# إعدادات OpenClaw المحلية وجلسات واتساب
+.openclaw/
+**/credentials/
+**/whatsapp*/auth*/
+**/creds.json
+
+# أدوات محلية
+.tools/
+node_modules/
+*.log
